@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -35,4 +37,28 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.teamCard {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  margin: 0 auto;
+}
+
+input, select, button {
+  height: 1.5rem;
+  width: 150px;
+  margin: 8px 8px 8px 0;
+}
+
+button {
+  color: #61DBFB;
+  background-color: white;
+  border: 1px solid #61DBFB;
+
+}
+
+button:hover{
+  box-shadow: 0 1px 4px 0 #61DBFB;
 }
