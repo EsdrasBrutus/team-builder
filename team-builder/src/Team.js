@@ -1,6 +1,5 @@
 import React from 'react'
 import Card from './style/Card'
-import styled from 'styled-components'
 
 export default function Team(props){
 

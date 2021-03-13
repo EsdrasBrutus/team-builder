@@ -1,37 +1,48 @@
 import React from 'react'
-import styled from 'styled-components'
-import Card from './style/Card'
 import './App.css';
 
 
+
+
 export default function Form(props) {
+    const { values, update, submit } = props
+
+    const onChange = evt => {
+        const { name, value } = evt.target
+        update(name, value)
+      }
+
+    const onSubmit = evt => {
+    evt.preventDefault();
+    submit()
+  }
+
 
     return (
-            <form className='form container' onSubmit={''}>
+            <form className='form container' onSubmit={onSubmit}>
                 <div>
                     <label> Name:
                         <input 
                             type='text' 
-                            value={''} 
+                            value={values.name} 
                             placeholder='Name' 
                             name='name' 
                             maxLength='15' 
-                            onChange={''} 
+                            onChange={onChange} 
                         />
 
                     </label>
                     <label> Email:
                         <input 
                             type='email' 
-                            value={''} 
+                            value={values.email} 
                             placeholder='Email' 
                             name='email' 
-                            maxLength='15' 
-                            onChange={''} 
+                            onChange={onChange} 
                         />  
                     </label>
                     <label>Role:
-                        <select onChange={''} values={''}>
+                        <select name='role' onChange={onChange} value={values.role}>
                             <option>Light</option>
                             <option>Darkness</option>
                         </select>

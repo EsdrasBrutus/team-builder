@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
-import logo from './logo.svg';
 import './App.css';
 import Team from './Team'
-import styled from 'styled-components'
 import Form from './Form'
 
 const teamList = [
@@ -12,17 +10,45 @@ const teamList = [
   {name: 'Xehanort', email: 'xehanort@kh.com', role: 'Darkness'},
 ]
 
+const initialFormValues = {
+  name: '',
+  email: '',
+  role: '',
+}
+
 function App() {
 
   const [team, setTeam] = useState(teamList)
+
+  const [formValues, setForms] = useState(initialFormValues)
+
+  const updateForm = (inputName, inputValue) => {
+    setForms({...formValues, [inputName]: inputValue})
+  }
+
+  const submitForm = () => {
+    const newTeam = {
+      name: formValues.name.trim(),
+      email: formValues.email.trim(),
+      role: formValues.role
+    }
+
+    setTeam([...team, newTeam])
+    setForms(initialFormValues)
+    console.log(newTeam)
+  }
   
   return (
     <div className="App">
       <h1>Team Members</h1>
-      <Form />
+      <Form 
+        values={formValues}
+        update={updateForm}
+        submit={submitForm}
+         />
       <div className= 'teamCard'>
-        {team.map((data)=>{
-          return (<Team team ={data} />)
+        {team.map((data, i)=>{
+          return (<Team key={i} team ={data} />)
           })
         }
       </div>
